@@ -1,0 +1,126 @@
+¿Qué es Wompi?
+Wompi es una pasarela de pagos colombiana que permite a empresas y emprendedores recibir pagos en línea de manera segura, rápida y confiable. Fundada en 2020, se ha convertido en una de las principales soluciones de pagos digitales en Colombia.
+
+Características principales de Wompi:
+- Procesamiento de pagos con tarjetas de crédito y débito
+- Transferencias bancarias (PSE)
+- Pagos con Nequi
+- Integración fácil con sitios web y aplicaciones móviles
+- Dashboard intuitivo para gestionar transacciones
+- Tarifas competitivas y transparentes
+- Soporte técnico especializado
+
+¿Cómo funciona Wompi?
+Wompi funciona como intermediario entre los comercios y las entidades financieras. Cuando un cliente realiza una compra:
+1. El cliente selecciona el método de pago en el checkout
+2. Wompi procesa la transacción de forma segura
+3. Se valida la información con la entidad financiera
+4. Se confirma o rechaza el pago
+5. El dinero se transfiere a la cuenta del comercio
+
+Métodos de pago disponibles:
+- Tarjetas de crédito: Visa, Mastercard, American Express
+- Tarjetas débito: Visa Débito, Mastercard Débito
+- PSE (Pagos Seguros en Línea)
+- Nequi
+- Daviplata
+- Efectivo (próximamente)
+
+Seguridad en Wompi:
+Wompi cumple con los más altos estándares de seguridad:
+- Certificación PCI DSS Level 1
+- Encriptación SSL de 256 bits
+- Tokenización de datos sensibles
+- Monitoreo 24/7 de transacciones
+- Prevención de fraude con machine learning
+
+Tarifas de Wompi:
+- Sin costos de implementación
+- Sin cuota mensual
+- Comisión por transacción exitosa únicamente
+- Tarifas preferenciales para alto volumen
+- Sin contratos de permanencia
+
+Integración con Wompi:
+Wompi ofrece múltiples formas de integración:
+- API REST completa
+- SDKs para diferentes lenguajes de programación
+- Plugins para e-commerce populares (WooCommerce, Shopify, etc.)
+- Checkout embebido
+- Enlaces de pago
+- Botones de pago
+
+Soporte al cliente:
+Wompi proporciona soporte técnico y comercial:
+- Documentación completa en línea
+- Chat en vivo durante horario laboral
+- Soporte por email
+- Webinars y tutoriales
+- Comunidad de desarrolladores
+
+¿Quién puede usar Wompi?
+Wompi está diseñado para:
+- E-commerce y tiendas en línea
+- Aplicaciones móviles
+- Marketplaces
+- Suscripciones y pagos recurrentes
+- Servicios profesionales
+- ONGs y fundaciones
+- Instituciones educativas
+
+Beneficios de usar Wompi:
+- Incrementa las ventas online
+- Reduce la fricción en el proceso de pago
+- Mejora la experiencia del usuario
+- Acceso a reportes detallados
+- Gestión centralizada de pagos
+- Escalabilidad automática
+- Cumplimiento normativo
+
+Dashboard de Wompi:
+El panel de control permite:
+- Ver transacciones en tiempo real
+- Generar reportes personalizados
+- Configurar notificaciones
+- Gestionar reembolsos
+- Administrar usuarios y permisos
+- Monitorear el rendimiento de ventas
+
+Wompi para desarrolladores:
+- API bien documentada
+- Webhooks para notificaciones en tiempo real
+- Ambiente de sandbox para pruebas
+- Bibliotecas y SDKs oficiales
+- Ejemplos de código
+- Herramientas de testing
+
+Casos de uso exitosos:
+Wompi ha sido implementado exitosamente en:
+- Tiendas de retail online
+- Plataformas educativas
+- Servicios de delivery
+- Aplicaciones de movilidad
+- Suscripciones de contenido digital
+- Donaciones online
+
+Cumplimiento regulatorio:
+Wompi opera bajo supervisión de:
+- Superintendencia Financiera de Colombia
+- Cumplimiento con ley de datos personales
+- Normas internacionales de seguridad
+- Regulaciones anti-lavado de dinero
+
+¿Cómo empezar con Wompi?
+1. Registrarse en wompi.co
+2. Completar el proceso de verificación
+3. Acceder a la documentación técnica
+4. Implementar la integración
+5. Realizar pruebas en ambiente sandbox
+6. Activar el modo producción
+7. Comenzar a recibir pagos
+
+Wompi móvil:
+- App móvil para comerciantes
+- Notificaciones push de transacciones
+- Acceso a reportes desde el celular
+- Gestión de reembolsos móvil
