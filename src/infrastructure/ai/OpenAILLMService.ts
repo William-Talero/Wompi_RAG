@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { ChatOpenAI } from '@langchain/openai';
 import { config } from '../../shared/config/environment';
 
@@ -6,6 +7,7 @@ export interface LLMResponse {
   context: string[];
 }
 
+@Injectable()
 export class OpenAILLMService {
   private llm: ChatOpenAI;
 

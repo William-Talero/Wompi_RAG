@@ -1,6 +1,7 @@
+import { Injectable } from '@nestjs/common';
 import { SearchResult } from '../entities/Vector';
-import { IVectorRepository } from '../repositories/IVectorRepository';
-import { IEmbeddingService } from './AddDocumentUseCase';
+import { LanceVectorRepository } from '../../infrastructure/database/LanceVectorRepository';
+import { OpenAIEmbeddingService } from '../../infrastructure/ai/OpenAIEmbeddingService';
 
 export interface SearchRequest {
   query: string;
@@ -15,10 +16,11 @@ export interface SearchResponse {
   totalResults: number;
 }
 
+@Injectable()
 export class SearchDocumentsUseCase {
   constructor(
-    private vectorRepository: IVectorRepository,
-    private embeddingService: IEmbeddingService
+    private vectorRepository: LanceVectorRepository,
+    private embeddingService: OpenAIEmbeddingService
   ) {}
 
   async execute(request: SearchRequest): Promise<SearchResponse> {

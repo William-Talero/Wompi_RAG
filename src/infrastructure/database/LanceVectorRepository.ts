@@ -1,8 +1,10 @@
+import { Injectable } from '@nestjs/common';
 import { connect, Table } from 'vectordb';
 import { IVectorRepository } from '../../domain/repositories/IVectorRepository';
 import { Vector, SearchResult } from '../../domain/entities/Vector';
 import { config } from '../../shared/config/environment';
 
+@Injectable()
 export class LanceVectorRepository implements IVectorRepository {
   private table: Table | null = null;
   private isInitialized = false;

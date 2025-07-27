@@ -1,7 +1,9 @@
+import { Injectable } from '@nestjs/common';
 import { SearchDocumentsUseCase, SearchRequest } from '../../domain/usecases/SearchDocumentsUseCase';
 import { SearchRequestDTO, SearchResponseDTO, SearchResultDTO } from '../dto/SearchResultDTO';
 import { OpenAILLMService } from '../../infrastructure/ai/OpenAILLMService';
 
+@Injectable()
 export class VectorSearchService {
   constructor(
     private searchDocumentsUseCase: SearchDocumentsUseCase,

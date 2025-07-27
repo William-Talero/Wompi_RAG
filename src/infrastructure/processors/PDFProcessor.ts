@@ -1,6 +1,8 @@
+import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import pdf from 'pdf-parse';
 
+@Injectable()
 export class PDFProcessor {
   async extractText(filePath: string): Promise<string> {
     const dataBuffer = fs.readFileSync(filePath);

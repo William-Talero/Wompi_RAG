@@ -1,6 +1,8 @@
+import { Injectable } from '@nestjs/common';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { ITextProcessor } from '../../domain/usecases/AddDocumentUseCase';
 
+@Injectable()
 export class TextProcessor implements ITextProcessor {
   private textSplitter: RecursiveCharacterTextSplitter;
 

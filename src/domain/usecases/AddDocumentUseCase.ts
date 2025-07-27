@@ -1,7 +1,10 @@
+import { Injectable } from '@nestjs/common';
 import { Document } from '../entities/Document';
 import { Vector } from '../entities/Vector';
-import { IVectorRepository } from '../repositories/IVectorRepository';
-import { IDocumentRepository } from '../repositories/IDocumentRepository';
+import { LanceVectorRepository } from '../../infrastructure/database/LanceVectorRepository';
+import { SimpleDocumentRepository } from '../../infrastructure/database/SimpleDocumentRepository';
+import { OpenAIEmbeddingService } from '../../infrastructure/ai/OpenAIEmbeddingService';
+import { TextProcessor } from '../../infrastructure/processors/TextProcessor';
 
 export interface IEmbeddingService {
   generateEmbedding(text: string): Promise<number[]>;
@@ -11,12 +14,13 @@ export interface ITextProcessor {
   processText(text: string): Promise<string[]>;
 }
 
+@Injectable()
 export class AddDocumentUseCase {
   constructor(
-    private vectorRepository: IVectorRepository,
-    private documentRepository: IDocumentRepository,
-    private embeddingService: IEmbeddingService,
-    private textProcessor: ITextProcessor
+    private vectorRepository: LanceVectorRepository,
+    private documentRepository: SimpleDocumentRepository,
+    private embeddingService: OpenAIEmbeddingService,
+    private textProcessor: TextProcessor
   ) {}
 
   async execute(document: Document): Promise<void> {

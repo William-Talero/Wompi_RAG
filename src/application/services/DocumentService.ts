@@ -1,8 +1,10 @@
+import { Injectable } from '@nestjs/common';
 import { v4 as uuidv4 } from 'uuid';
 import { AddDocumentUseCase } from '../../domain/usecases/AddDocumentUseCase';
 import { Document } from '../../domain/entities/Document';
 import { AddDocumentDTO, AddDocumentResponse } from '../dto/AddDocumentDTO';
 
+@Injectable()
 export class DocumentService {
   constructor(private addDocumentUseCase: AddDocumentUseCase) {}
 

@@ -1,7 +1,9 @@
+import { Injectable } from '@nestjs/common';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { IEmbeddingService } from '../../domain/usecases/AddDocumentUseCase';
 import { config } from '../../shared/config/environment';
 
+@Injectable()
 export class OpenAIEmbeddingService implements IEmbeddingService {
   private embeddings: OpenAIEmbeddings;
 
