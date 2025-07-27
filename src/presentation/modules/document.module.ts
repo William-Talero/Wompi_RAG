@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MulterModule } from '@nestjs/platform-express';
+import { memoryStorage } from 'multer';
 import { DocumentController } from '../controllers/document.controller';
 import { DocumentService } from '../../application/services/DocumentService';
 import { AddDocumentUseCase } from '../../domain/usecases/AddDocumentUseCase';
@@ -12,7 +13,10 @@ import { PDFProcessor } from '../../infrastructure/processors/PDFProcessor';
 @Module({
   imports: [
     MulterModule.register({
-      dest: './uploads',
+      storage: memoryStorage(), // Usar almacenamiento en memoria para Vercel
+      limits: {
+        fileSize: 10 * 1024 * 1024, // Límite de 10MB
+      },
     }),
   ],
   controllers: [DocumentController],
