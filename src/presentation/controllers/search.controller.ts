@@ -3,6 +3,10 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { VectorSearchService } from '../../application/services/VectorSearchService';
 import { SearchRequestDTO } from '../../application/dto/SearchResultDTO';
 import { ChatRequestDTO } from '../../application/dto/ChatDTO';
+import { DataLoader } from '../../infrastructure/database/DataLoader';
+import { PineconeVectorRepository } from '../../infrastructure/database/PineconeVectorRepository';
+import { OpenAIEmbeddingService } from '../../infrastructure/ai/OpenAIEmbeddingService';
+import { TextProcessor } from '../../infrastructure/processors/TextProcessor';
 
 @Controller()
 export class SearchController {
@@ -10,16 +14,56 @@ export class SearchController {
 
   @Post('initialize')
   @ApiTags('Documents')
-  @ApiOperation({ summary: 'Inicializar base de datos y cargar documentos' })
-  @ApiResponse({ status: 200, description: 'Base de datos inicializada correctamente' })
+  @ApiOperation({ 
+    summary: 'Inicializar base de datos Pinecone y cargar documentos iniciales',
+    description: 'Crea el índice de Pinecone y carga automáticamente los documentos desde data/knowledge/'
+  })
+  @ApiResponse({ 
+    status: 200, 
+    description: 'Base de datos inicializada y documentos cargados correctamente',
+    schema: {
+      type: 'object',
+      properties: {
+        message: { type: 'string' },
+        details: { type: 'string' },
+        statusCode: { type: 'number' }
+      }
+    }
+  })
   async initialize() {
     try {
-      // This would typically load initial data
+      // Initialize services
+      const vectorRepo = new PineconeVectorRepository();
+      const embeddingService = new OpenAIEmbeddingService();
+      const textProcessor = new TextProcessor();
+      const dataLoader = new DataLoader(vectorRepo, embeddingService, textProcessor);
+      
+      // Initialize Pinecone
+      console.log('🔧 Initializing Pinecone...');
+      await vectorRepo.initialize();
+      
+      // Check if initial data already exists
+      const hasData = await dataLoader.hasInitialData();
+      
+      if (hasData) {
+        return {
+          message: 'Pinecone database initialized successfully',
+          details: 'Initial data already exists, skipping reload',
+          statusCode: HttpStatus.OK
+        };
+      }
+      
+      // Load initial data
+      console.log('📚 Loading initial knowledge base...');
+      await dataLoader.loadInitialData();
+      
       return {
-        message: 'Database initialized successfully',
+        message: 'Pinecone database initialized successfully',
+        details: 'Initial knowledge base loaded from data/knowledge/',
         statusCode: HttpStatus.OK
       };
     } catch (error) {
+      console.error('❌ Initialization failed:', error);
       return {
         error: `Initialization failed: ${error instanceof Error ? error.message : 'Unknown error'}`,
         statusCode: HttpStatus.INTERNAL_SERVER_ERROR

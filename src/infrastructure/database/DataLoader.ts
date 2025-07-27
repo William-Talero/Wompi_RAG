@@ -82,13 +82,32 @@ export class DataLoader {
 
   async hasInitialData(): Promise<boolean> {
     try {
-      // Verificar si ya existe data inicial buscando vectores con category 'knowledge_base'
+      // Para Pinecone, verificar las estadísticas del índice
+      if (this.vectorRepository instanceof (await import('./PineconeVectorRepository')).PineconeVectorRepository) {
+        const stats = await (this.vectorRepository as any).getStats();
+        
+        if (stats && stats.totalVectorCount && stats.totalVectorCount > 0) {
+          console.log(`ℹ️  Found ${stats.totalVectorCount} existing vectors in Pinecone`);
+          return true;
+        }
+      }
+      
+      // Fallback: verificar si ya existe data inicial buscando vectores
       const testVector = new Array(1536).fill(0.1);
-      const results = await this.vectorRepository.searchSimilar(testVector, 1, 1.0);
+      const results = await this.vectorRepository.searchSimilar(testVector, 1, 0.0);
       
       // Si encontramos algún resultado, asumimos que ya hay data inicial
-      return results.length > 0;
+      const hasData = results.length > 0;
+      
+      if (hasData) {
+        console.log(`ℹ️  Found ${results.length} existing documents via search`);
+      } else {
+        console.log('ℹ️  No existing documents found');
+      }
+      
+      return hasData;
     } catch (error) {
+      console.log('ℹ️  Error checking for initial data, assuming none exists:', error instanceof Error ? error.message : 'Unknown error');
       // Si hay error en la búsqueda, asumimos que no hay data
       return false;
     }

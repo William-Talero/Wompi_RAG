@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { SearchResult } from '../entities/Vector';
-import { LanceVectorRepository } from '../../infrastructure/database/LanceVectorRepository';
+import { PineconeVectorRepository } from '../../infrastructure/database/PineconeVectorRepository';
 import { OpenAIEmbeddingService } from '../../infrastructure/ai/OpenAIEmbeddingService';
 
 export interface SearchRequest {
@@ -19,7 +19,7 @@ export interface SearchResponse {
 @Injectable()
 export class SearchDocumentsUseCase {
   constructor(
-    private vectorRepository: LanceVectorRepository,
+    private vectorRepository: PineconeVectorRepository,
     private embeddingService: OpenAIEmbeddingService
   ) {}
 

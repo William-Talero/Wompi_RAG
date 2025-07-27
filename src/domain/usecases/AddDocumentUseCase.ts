@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Document } from '../entities/Document';
 import { Vector } from '../entities/Vector';
-import { LanceVectorRepository } from '../../infrastructure/database/LanceVectorRepository';
+import { PineconeVectorRepository } from '../../infrastructure/database/PineconeVectorRepository';
 import { SimpleDocumentRepository } from '../../infrastructure/database/SimpleDocumentRepository';
 import { OpenAIEmbeddingService } from '../../infrastructure/ai/OpenAIEmbeddingService';
 import { TextProcessor } from '../../infrastructure/processors/TextProcessor';
@@ -17,7 +17,7 @@ export interface ITextProcessor {
 @Injectable()
 export class AddDocumentUseCase {
   constructor(
-    private vectorRepository: LanceVectorRepository,
+    private vectorRepository: PineconeVectorRepository,
     private documentRepository: SimpleDocumentRepository,
     private embeddingService: OpenAIEmbeddingService,
     private textProcessor: TextProcessor

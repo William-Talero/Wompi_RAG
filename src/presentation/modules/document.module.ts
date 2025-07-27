@@ -3,7 +3,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { DocumentController } from '../controllers/document.controller';
 import { DocumentService } from '../../application/services/DocumentService';
 import { AddDocumentUseCase } from '../../domain/usecases/AddDocumentUseCase';
-import { LanceVectorRepository } from '../../infrastructure/database/LanceVectorRepository';
+import { PineconeVectorRepository } from '../../infrastructure/database/PineconeVectorRepository';
 import { SimpleDocumentRepository } from '../../infrastructure/database/SimpleDocumentRepository';
 import { OpenAIEmbeddingService } from '../../infrastructure/ai/OpenAIEmbeddingService';
 import { TextProcessor } from '../../infrastructure/processors/TextProcessor';
@@ -19,7 +19,7 @@ import { PDFProcessor } from '../../infrastructure/processors/PDFProcessor';
   providers: [
     DocumentService,
     AddDocumentUseCase,
-    LanceVectorRepository,
+    PineconeVectorRepository,
     SimpleDocumentRepository,
     OpenAIEmbeddingService,
     TextProcessor,

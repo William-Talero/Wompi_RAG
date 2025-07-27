@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { SearchController } from '../controllers/search.controller';
 import { VectorSearchService } from '../../application/services/VectorSearchService';
 import { SearchDocumentsUseCase } from '../../domain/usecases/SearchDocumentsUseCase';
-import { LanceVectorRepository } from '../../infrastructure/database/LanceVectorRepository';
+import { PineconeVectorRepository } from '../../infrastructure/database/PineconeVectorRepository';
 import { OpenAIEmbeddingService } from '../../infrastructure/ai/OpenAIEmbeddingService';
 import { OpenAILLMService } from '../../infrastructure/ai/OpenAILLMService';
 
@@ -11,7 +11,7 @@ import { OpenAILLMService } from '../../infrastructure/ai/OpenAILLMService';
   providers: [
     VectorSearchService,
     SearchDocumentsUseCase,
-    LanceVectorRepository,
+    PineconeVectorRepository,
     OpenAIEmbeddingService,
     OpenAILLMService,
   ],
